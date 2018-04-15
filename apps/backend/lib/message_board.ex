@@ -2,7 +2,7 @@ defmodule MessageBoard do
   use GenServer
   alias ExLCD
   
-  lcd_config  %{ rs: 25, en: 24, d4: 17, d5: 22, d6: 23, d7: 18, rows: 2, cols: 20, font_5x10: false }
+  @lcd_config  %{ rs: 25, en: 24, d4: 17, d5: 22, d6: 23, d7: 18, rows: 2, cols: 20, font_5x10: false }
 
 
   #Client
