@@ -28,6 +28,9 @@ defmodule MessageBoard do
 
   def handle_cast(message, %{messages: messages, gpio_pid: gpio_pid}) do
     updated_messages = [message|messages]
+    ExLCD.clear()
+    ExLCD.home("Added Message")
+    ExLCD.move_to(2,1)
     ExLCD.write(message)
     {:noreply, %{messages: updated_messages, gpio_pid: gpio_pid} }
   end
