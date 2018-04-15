@@ -1,0 +1,5 @@
+%{
+  "elixir_ale": {:hex, :elixir_ale, "1.0.3", "030d417a932eb70a3ca9652e104e815d447a0e4e92fb45aaedce914a03c824b0", [:make, :mix], [{:elixir_make, "~> 0.4", [hex: :elixir_make, repo: "hexpm", optional: false]}], "hexpm"},
+  "elixir_make": {:hex, :elixir_make, "0.4.1", "6628b86053190a80b9072382bb9756a6c78624f208ec0ff22cb94c8977d80060", [:mix], [], "hexpm"},
+  "ex_lcd": {:hex, :ex_lcd, "0.4.0", "9e8f62ad2c1756633b6c7fe8699815b32e0df0776d0831e93c09f4ef9ab89adb", [:mix], [{:elixir_ale, "~> 0.6.1", [hex: :elixir_ale, repo: "hexpm", optional: false]}], "hexpm"},
+}
