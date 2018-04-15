@@ -1,6 +1,18 @@
 defmodule MessageBoard do 
   use GenServer
   alias ElixirALE.GPIO
+  @lcd_config = %{
+    rs: 25,
+    en: 24,
+    d4: 17,
+    d5: 22,
+    d6: 23,
+    d7: 18,
+    rows: 2,
+    cols: 20,
+    font_5x10: false
+  }
+
 
   #Client
   def start_link do
@@ -18,15 +30,13 @@ defmodule MessageBoard do
 
   #Server
   def init(%{messages: messages, gpio_pid: _pid})   do
-    {:ok, pid} = GPIO.start_link(18, :output)
+    {:ok, pid} = ExLCD.start_link({ExLCD.HD44780, lcd_config})
     {:ok, %{messages: messages, gpio_pid: pid} }
   end
 
   def handle_cast(message, %{messages: messages, gpio_pid: gpio_pid}) do
     updated_messages = [message|messages]
-    GPIO.write(gpio_pid,1)
-    :timer.sleep(2000)
-    GPIO.write(gpio_pid,0)
+    ExLCD.write(message)
     {:noreply, %{messages: updated_messages, gpio_pid: gpio_pid} }
   end
 
